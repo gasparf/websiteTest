@@ -1,23 +1,64 @@
 import React, { useState } from "react";
-
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as CgIcons from "react-icons/cg";
+import { Link } from "react-router-dom";
+import { NavBarData } from "./NavBarData";
+import "./NavBar.css";
+import { IconContext } from "react-icons";
 
 function NavBar() {
-    const [sideBar, setSideBar] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
 
-    const showSidebar = () => setSideBar(!sideBar);
+  const showSidebar = () => setSidebar(!sidebar);
 
-    return(
-        <>
-        
-            <div className="navbar">
-                
+//   future plans to generalize the styling of icons in css rather than in base code, for cleanliness purposes.
+  return (
+    <>
+      <IconContext.Provider value={{ color: "#E83131" }}>
+        <div className="navbar">
+          <Link to="#" className="menu-bars">
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
 
+          <table className="accIconContainer">
+            <tr>
+              <td>
+                {" "}
+                <AiIcons.AiOutlinePlus className="accIcons" />{" "}
+              </td>
+              <td>
+                {" "}
+                <CgIcons.CgProfile className="accIcons" />{" "}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </IconContext.Provider>
 
-            </div>
-        
-        
-        
-        </>
-    )
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+          <ul className="nav-menu-items" onClick={showSidebar}>
+            <li className="navbar-toggle">
+              <Link to="#" className="menu-bars">
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {NavBarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span className="navbar-title">{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
+  );
 }
 
+export default NavBar;

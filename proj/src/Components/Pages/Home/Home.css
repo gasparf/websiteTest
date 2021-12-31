@@ -1,0 +1,6 @@
+.cardContainer {
+    background-color: rgb(214, 179, 151);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly
+}

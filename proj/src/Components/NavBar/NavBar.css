@@ -1,0 +1,10 @@
+.navbar {
+    display: flex;
+    background-color: #757BC8;
+
+}
+
+.menu-bars{ 
+    width: 1vw;
+    height: 1vh;
+}
