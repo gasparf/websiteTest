@@ -1,13 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Home/Home.js'
+import NavBar from './Components/NavBar/NavBar.js'
 
 function App() {
   return (
     <div>
-      <Home />
+      <NavBar />
+      <div>
+        <Home />  
+      </div>
+      <div>
+        
 
-      
+      </div>
+
+
     </div>
   );
 }
